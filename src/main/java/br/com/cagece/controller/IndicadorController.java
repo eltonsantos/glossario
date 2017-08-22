@@ -57,36 +57,12 @@ public class IndicadorController {
         return "indicador?faces-redirect=";
         
     }
-    
-    /*
-    public void cadastrarIndicador(){       
-        EntityManager em = new JPAUtil().getEntityManager();
-        em.getTransaction().begin();
-        em.persist(indicador);
-        em.getTransaction().commit();
-        em.close();
         
-        this.indicador = new Indicador();
-        
-        //return "index";
-    }
-    */
-    
     public void carregarIndicador(Indicador indicador){
         System.out.println("----------------------------------- CARREGANDO DADOS DO INDICADOR");
         this.indicador = indicador;
     }
-    
-    /*
-    public void editarIndicador(Indicador indicador){
-        EntityManager em = new JPAUtil().getEntityManager();
-        em.getTransaction().begin();
-        em.merge(indicador);
-        em.getTransaction().commit();
-        em.close();
-    }
-    */
-    
+        
     public void carregarIndicadorPelaId(){
         EntityManager em = new JPAUtil().getEntityManager();
     }
