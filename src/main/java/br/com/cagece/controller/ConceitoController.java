@@ -59,11 +59,8 @@ public class ConceitoController implements Serializable {
     
     // GRAVAR INDICADOR ASSOCIADO AO CONCEITO
     public void gravarIndicador(Indicador indicador){
-        EntityManager em = new JPAUtil().getEntityManager();
-        em.getTransaction().begin();
-        em.persist(indicador);
-        em.getTransaction().commit();
-        em.close();
+        this.conceito.cadastrarIndicador(indicador);
+        System.out.println("--- Indicador: " +indicador.getTitulo());
     }
     
     public String gravarConceito(){
@@ -108,8 +105,13 @@ public class ConceitoController implements Serializable {
     }
     
     public void excluirIndicadorDoConceito(Indicador indicador){
-        System.out.println("Excluindo indicador do conceito");
-        //this.conceito.excluirIndicador(indicador);
+        System.out.println("Excluindo indicador associado ao conceito");
+        this.conceito.excluirIndicador(indicador);
+    }
+    
+    public String formIndicador(){
+        System.out.println("Chamada do formulário do Indicador");
+        return "indicador?faces-redirect=true";
     }
     
     public void carregarConceitoPelaId(){

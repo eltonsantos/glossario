@@ -70,13 +70,13 @@
                     <h:selectOneMenu value="#{conceitoBean.indicadorId}" id="indicador">
                         <f:selectItems value="#{conceitoBean.indicadores}" var="indicador" itemLabel="#{indicador.titulo}" itemValue="#{indicador.id}" />
                     </h:selectOneMenu>
-                    <h:commandButton value="Associar indicador" action="#{conceitoBean.gravarIndicador}">
+                    <h:commandButton value="Associar ao conceito" action="#{conceitoBean.gravarIndicador}">
                         <f:ajax execute="indicador" render="tabelaIndicadores" />
                     </h:commandButton>
                     
                     <br />
                     
-                    <h:commandLink value="Cadastrar novo indicador" action="/indicador.xhtml" immediate="true" />
+                    <h:commandLink value="Cadastrar novo indicador" action="#{conceitoBean.formIndicador()}" immediate="true" />
                     
                     <h:dataTable value="#{conceitoBean.indicadoresDoConceito}" var="indicador" id="tabelaIndicadores">
                         <h:column>

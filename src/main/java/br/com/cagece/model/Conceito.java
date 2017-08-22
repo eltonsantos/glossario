@@ -57,10 +57,12 @@ public class Conceito implements Serializable {
     }
     
     /* MÉTODOS */
-    public void cadastrarIndicador(){
+    public void cadastrarIndicador(Indicador indicador){
+        this.indicadores.add(indicador);
     }
     
-    public void excluirIndicador(){
+    public void excluirIndicador(Indicador indicador){
+        this.indicadores.remove(indicador);
     }
     
     /* GETTERS AND SETTERS */
