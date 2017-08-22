@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
             
     <ui:composition template="_template.xhtml">
         
@@ -11,6 +12,20 @@
             <f:viewParam name="conceitoId" value="#{conceitoBean.conceitoId}" />
             <f:viewAction action="#{conceitoBean.carregarConceitoPelaId}" />
         </f:metadata>
+                
+        <ui:define name="menu">
+            <h:form>
+                <p:menu>
+                    <p:submenu label="MENU">
+                        <p:menuitem value="HOME" outcome="/index.xhtml"></p:menuitem>
+                        <p:separator/>
+                        <p:menuitem value="INDICADOR" outcome="/indicador.xhtml"></p:menuitem>
+                        <p:separator/>
+                        <p:menuitem value="CONCEITO" outcome="/conceito.xhtml"></p:menuitem>
+                    </p:submenu>
+                </p:menu>
+            </h:form>
+        </ui:define>
         
         <ui:define name="titulo">
             Novo Conceito
@@ -41,17 +56,36 @@
                         </h:inputText>
                         
                         <h:outputLabel value="Link Cognos: " for="linkCognos" />
-                        <h:inputText id="linkCognos" value="#{conceitoBean.conceito.linkCognos}" required="true" requiredMessage="Descrição obrigatória" validatorMessage="Título não pode ser superior a 400 carácteres">
-                            <f:validateLength maximum="400" />
-                            <f:ajax event="blur" render="messages" />
-                        </h:inputText>
+                        <h:inputText id="linkCognos" value="#{conceitoBean.conceito.linkCognos}" />
                         
                         <h:outputLabel value="Link Pentaho: " for="linkPentaho" />
-                        <h:inputText id="linkPentaho" value="#{conceitoBean.conceito.linkPentaho}" required="true" requiredMessage="Descrição obrigatória" validatorMessage="Título não pode ser superior a 400 carácteres">
-                            <f:validateLength maximum="400" />
-                            <f:ajax event="blur" render="messages" />
-                        </h:inputText>
+                        <h:inputText id="linkPentaho" value="#{conceitoBean.conceito.linkPentaho}" />
                     </h:panelGrid>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Dados do Indicador</legend>
+                    
+                    <h:outputLabel value="Selecione o indicador: " for="indicador" />
+                    <h:selectOneMenu value="#{conceitoBean.indicadorId}" id="indicador">
+                        <f:selectItems value="#{conceitoBean.indicadores}" var="indicador" itemLabel="#{indicador.titulo}" itemValue="#{indicador.id}" />
+                    </h:selectOneMenu>
+                    <h:commandButton value="Associar indicador" action="#{conceitoBean.gravarIndicador}">
+                        <f:ajax execute="indicador" render="tabelaIndicadores" />
+                    </h:commandButton>
+                    
+                    <br />
+                    
+                    <h:commandLink value="Cadastrar novo indicador" action="/indicador.xhtml" immediate="true" />
+                    
+                    <h:dataTable value="#{conceitoBean.indicadoresDoConceito}" var="indicador" id="tabelaIndicadores">
+                        <h:column>
+                            <h:outputText value="#{indicador.titulo}" />
+                        </h:column>
+                        <h:column>
+                            <h:commandLink value="X" action="#{conceitoBean.excluirIndicadorDoConceito(indicador)}" />
+                        </h:column>
+                    </h:dataTable>       
                 </fieldset>
                 
                 <h:commandButton value="Cadastrar conceito" action="#{conceitoBean.gravarConceito}">
@@ -66,6 +100,34 @@
                     <h:column>
                         <f:facet name="header">Descrição</f:facet>
                         <h:outputText value="#{conceito.descricao}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Data inicial</f:facet>
+                        <h:outputText value="#{conceito.dataInicio}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Data final</f:facet>
+                        <h:outputText value="#{conceito.dataFim}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Link cognos</f:facet>
+                        <h:outputText value="#{conceito.linkCognos}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Link pentaho</f:facet>
+                        <h:outputText value="#{conceito.linkPentaho}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Indicador</f:facet>
+                        <h:outputText value="#{conceito.indicadores}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Editar</f:facet>
+                        <h:commandLink value="Editar" action="#{conceitoBean.carregarConceito(conceito)}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Excluir</f:facet>
+                        <h:commandLink value="Excluir" action="#{conceitoBean.excluirConceito(conceito)}" />
                     </h:column>
                 </h:dataTable>
             </h:form>

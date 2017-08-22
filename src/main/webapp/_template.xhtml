@@ -9,18 +9,17 @@
     <h:head></h:head>
     
     <h:body>
+        <div id="menu">
+            <ui:insert name="menu"></ui:insert>
+            <hr />
+        </div>
+        
         <div id="cabecalho">
             <h1>
                 <ui:insert name="titulo"></ui:insert>
             </h1>
         </div>
         
-        <div id="menu">
-            <ui:insert name="menu">
-                
-            </ui:insert>
-        </div>
-
         <div id="conteudo">
             <ui:insert name="conteudo"></ui:insert>
         </div>

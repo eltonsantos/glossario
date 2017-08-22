@@ -44,7 +44,26 @@ public class ConceitoController implements Serializable {
     }
     
     public List<Indicador> getIndicadores(){
+        System.out.println("----------------------------------- LISTANDO TODOS OS INDICADORES");
+        EntityManager em = new JPAUtil().getEntityManager();
+        CriteriaQuery<Indicador> query = em.getCriteriaBuilder().createQuery(Indicador.class);
+        query.select(query.from(Indicador.class));
+        List<Indicador> indicadores = em.createQuery(query).getResultList();
+        em.close();
+        return indicadores;
+    }
+    
+    public List<Indicador> getIndicadoresDoConceito(){
         return this.conceito.getIndicadores();
+    }
+    
+    // GRAVAR INDICADOR ASSOCIADO AO CONCEITO
+    public void gravarIndicador(Indicador indicador){
+        EntityManager em = new JPAUtil().getEntityManager();
+        em.getTransaction().begin();
+        em.persist(indicador);
+        em.getTransaction().commit();
+        em.close();
     }
     
     public String gravarConceito(){
@@ -86,6 +105,11 @@ public class ConceitoController implements Serializable {
         em.getTransaction().commit();
         em.close();
         return "conceito?faces-redirect=true";
+    }
+    
+    public void excluirIndicadorDoConceito(Indicador indicador){
+        System.out.println("Excluindo indicador do conceito");
+        //this.conceito.excluirIndicador(indicador);
     }
     
     public void carregarConceitoPelaId(){
