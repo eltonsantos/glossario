@@ -121,10 +121,12 @@
                         <f:facet name="header">Link pentaho</f:facet>
                         <h:outputText value="#{conceito.linkPentaho}"></h:outputText>
                     </h:column>
+                    
                     <h:column>
                         <f:facet name="header">Indicador</f:facet>
                         <h:outputText value="#{conceito.indicadores}"></h:outputText>
                     </h:column>
+                    
                     <h:column>
                         <f:facet name="header">Editar</f:facet>
                         <h:commandLink value="Editar" action="#{conceitoBean.carregarConceito(conceito)}" />

@@ -23,7 +23,13 @@ public class Indicador implements Serializable {
 
     @NotNull
     private String titulo;
-
+    
+    /* MÉTODOS */
+    @Override
+    public String toString(){
+        return this.titulo;
+    }
+    
     /* CONSTRUTORES */
     public Indicador(){
     }
@@ -48,5 +54,5 @@ public class Indicador implements Serializable {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-     
+       
 }
