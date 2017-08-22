@@ -7,11 +7,16 @@ package br.com.cagece.controller;
 
 import br.com.cagece.model.Conceito;
 import br.com.cagece.model.Indicador;
+import br.com.cagece.util.JPAUtil;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
 
 
 /**
@@ -29,23 +34,62 @@ public class ConceitoController implements Serializable {
     
     /* MÉTODOS */
     public List<Conceito> getConceitos(){
-        return null;
+        System.out.println("----------------------------------- LISTANDO TODOS OS CONCEITOS");
+        EntityManager em = new JPAUtil().getEntityManager();
+        CriteriaQuery<Conceito> query = em.getCriteriaBuilder().createQuery(Conceito.class);
+        query.select(query.from(Conceito.class));
+        List<Conceito> conceitos = em.createQuery(query).getResultList();
+        em.close();
+        return conceitos;
     }
     
     public List<Indicador> getIndicadores(){
-        return null;
+        return this.conceito.getIndicadores();
     }
     
-    public void gravarConceito(){
+    public String gravarConceito(){
+        EntityManager em = new JPAUtil().getEntityManager();
+        em.getTransaction().begin();
+        if (conceito.getIndicadores().isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage("indicador", new FacesMessage("Conceito deve ter pelo menos um indicador."));
+        }
+        
+        if (this.conceito.getId() == null) {
+            System.out.println("----------------------------------- CADASTRANDO CONCEITO");
+            em.persist(conceito);
+            em.getTransaction().commit();
+            em.close();
+            this.conceito = new Conceito();
+        }
+        else{
+            System.out.println("----------------------------------- EDITANDO CONCEITO");
+            em.merge(conceito);
+            em.getTransaction().commit();
+            em.close();
+        }
+        
+        return "conceito?faces-redirect=true";
+        
     }
     
-    public void carregarConceito(){
+    public void carregarConceito(Conceito conceito){
+        System.out.println("----------------------------------- CARREGANDO DADOS DO CONCEITO");
+        this.conceito = conceito;
     }
     
-    public void excluirConceito(){
+    public String excluirConceito(Conceito conceito){
+        System.out.println("----------------------------------- EXCLUINDO CONCEITO");
+        EntityManager em = new JPAUtil().getEntityManager();
+        em.getTransaction().begin();
+        Conceito c = em.merge(conceito);
+        em.remove(c);
+        em.getTransaction().commit();
+        em.close();
+        return "conceito?faces-redirect=true";
     }
     
     public void carregarConceitoPelaId(){
+        EntityManager em = new JPAUtil().getEntityManager();
     }
 
     /* GETTERS AND SETTERS */

@@ -51,9 +51,12 @@
                             <f:validateLength maximum="400" />
                             <f:ajax event="blur" render="messages" />
                         </h:inputText>
-                        
                     </h:panelGrid>
                 </fieldset>
+                
+                <h:commandButton value="Cadastrar conceito" action="#{conceitoBean.gravarConceito}">
+                    <f:ajax execute="@form" render="@form :formTabelaConceitos:tabelaConceitos" />
+                </h:commandButton>
                 
             </h:form>
             

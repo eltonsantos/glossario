@@ -54,7 +54,7 @@ public class IndicadorController {
             em.close();
         }
         
-        return "indicador?faces-redirect=";
+        return "indicador?faces-redirect=true";
         
     }
         
