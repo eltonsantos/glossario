@@ -103,11 +103,15 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Data inicial</f:facet>
-                        <h:outputText value="#{conceito.dataInicio}"></h:outputText>
+                        <h:outputText value="#{conceito.dataInicio}">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">Data final</f:facet>
-                        <h:outputText value="#{conceito.dataFim}"></h:outputText>
+                        <h:outputText value="#{conceito.dataFim}">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">Link cognos</f:facet>

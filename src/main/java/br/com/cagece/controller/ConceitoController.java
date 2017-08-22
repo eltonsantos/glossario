@@ -10,6 +10,7 @@ import br.com.cagece.model.Indicador;
 import br.com.cagece.util.JPAUtil;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -31,6 +32,11 @@ public class ConceitoController implements Serializable {
     private Conceito conceito = new Conceito();
     private Integer conceitoId;
     private Integer indicadorId;
+    
+    @PostConstruct
+    private void init(){
+        Indicador indicador = new Indicador();
+    }
     
     /* MÉTODOS */
     public List<Conceito> getConceitos(){
@@ -58,7 +64,9 @@ public class ConceitoController implements Serializable {
     }
     
     // GRAVAR INDICADOR ASSOCIADO AO CONCEITO
-    public void gravarIndicador(Indicador indicador){
+    public void gravarIndicador(){
+        EntityManager em = new JPAUtil().getEntityManager();
+        Indicador indicador = em.find(Indicador.class, this.indicadorId);
         this.conceito.cadastrarIndicador(indicador);
         System.out.println("--- Indicador: " +indicador.getTitulo());
     }
