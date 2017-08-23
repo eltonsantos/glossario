@@ -18,38 +18,38 @@
 
     <ui:define name="body">
         <h:form id="indicador">
-            <fieldset>
-                <legend>Dados do Indicador</legend>
-                <h:panelGrid columns="3">
+           
+                           
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <p:outputLabel for="titulo" value="Título" />
+                </div>
+                <div class="ui-g-12">
+                    <p:inputText id="titulo" value="#{indicadorBean.indicador.titulo}" size="40" styleClass="form-control"/>
+                </div>
+            </div>
 
-                    <h:outputLabel value="Título:" for="titulo" />
-                    <h:inputText id="titulo" value="#{indicadorBean.indicador.titulo}"
-                            required="true">
-                            <f:validateLength minimum="5" />
-                            <f:ajax event="blur" render="messageTitulo" />
-                    </h:inputText>
+            <h:message for="titulo" id="messageTitulo" />
 
-                    <h:message for="titulo" id="messageTitulo" />
+            <h:commandButton value="Cadastrar Indicador" class="btn btn-primary" type="submit" action="#{indicadorBean.gravarIndicador}" />
 
-                    <h:commandButton value="Cadastrar Indicador" type="submit" action="#{indicadorBean.gravarIndicador}" />
-
-                </h:panelGrid>
-            </fieldset>
         </h:form>
 
+        <hr />
+        
         <h:form id="formTabelaIndicadores">
-            <h:dataTable value="#{indicadorBean.indicadores}" var="indicador" id="tabelaIndicadores" class="table table-striped table-info table-hover">
+            <h:dataTable value="#{indicadorBean.indicadores}" var="indicador" id="tabelaIndicadores" class="table table-striped table-hover">
                 <h:column>
                     <f:facet name="header">Título</f:facet>
                     <h:outputText value="#{indicador.titulo}" />
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Alterar</f:facet>
-                    <h:commandLink value="Editar Indicador" action="#{indicadorBean.carregarIndicador(indicador)}"/>
+                    <f:facet name="header">Editar</f:facet>
+                    <h:commandLink value="Editar Indicador" class="btn btn-info" action="#{indicadorBean.carregarIndicador(indicador)}"/>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Remover</f:facet>
-                    <h:commandLink value="Excluir Indicador" action="#{indicadorBean.excluirIndicador(indicador)}"/>
+                    <f:facet name="header">Excluir</f:facet>
+                    <h:commandLink value="Excluir Indicador" class="btn btn-danger" action="#{indicadorBean.excluirIndicador(indicador)}"/>
                 </h:column>
             </h:dataTable>
         </h:form>
