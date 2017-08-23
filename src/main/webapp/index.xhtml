@@ -1,35 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>PÁGINA INICIAL - GLOSSÁRIO</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </h:head>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="WEB-INF/templates/template.xhtml">
 
-    <ui:composition template="_template.xhtml">
+    <ui:define name="head-end">
+        <ui:param name="renderBreadCrumb" value="false"/>
+    </ui:define>
 
-        <ui:define name="titulo">
-            Usando JSF com PRIMEFACES
-        </ui:define>
+    <ui:define name="title">
+        <p:growl autoUpdate="true" life="4000"/>
 
-        <ui:define name="menu">
-            <h:form>
-                <p:menu>
-                    <p:submenu label="MENU">
-                        <p:menuitem value="HOME" outcome="/index.xhtml"></p:menuitem>
-                        <p:separator/>
-                        <p:menuitem value="INDICADOR" outcome="/indicador.xhtml"></p:menuitem>
-                        <p:separator/>
-                        <p:menuitem value="CONCEITO" outcome="/conceito.xhtml"></p:menuitem>
-                    </p:submenu>
-                </p:menu>
-            </h:form>
-        </ui:define>
+        <h2 class="align-center">
+            Bem vindo ao sistema de <span class="text-aqua"> <i> Glossário da GEFAR</i></span>!
+            <br/>
+            <small>Utilizando <p:link value="Primefaces" href="http://primefaces.org" target="_blank"/>,
+                              <p:link value="Bootstrap" href="http://getbootstrap.com/" target="_blank"/> e
+                              <p:link value="Admin LTE" href="https://almsaeedstudio.com/themes/AdminLTE/index2.html" target="_blank"/> com
+                              <p:link value="JSF" href="https://javaserverfaces.java.net/" target="_blank"/>.
+            </small>
+        </h2>
 
-    </ui:composition>
+    </ui:define>
     
-</html>
+</ui:composition>
