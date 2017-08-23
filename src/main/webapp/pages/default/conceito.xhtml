@@ -31,7 +31,7 @@
                     <p:outputLabel value="Data Inicial: " for="dataInicio" />
                 </div>
                 <div class="ui-g-2">
-                    <h:inputText id="dataInicio" value="#{conceitoBean.conceito.dataInicio}" class="form-control" >
+                    <h:inputText id="dataInicio" value="#{conceitoBean.conceito.dataInicio}" class="form-control dataInicial" >
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Fortaleza" />
                     </h:inputText>
                 </div>
@@ -40,7 +40,7 @@
                     <p:outputLabel value="Data Final: " for="dataFim" />
                 </div>
                 <div class="ui-g-2">
-                    <h:inputText id="dataFim" value="#{conceitoBean.conceito.dataFim}" class="form-control" >
+                    <h:inputText id="dataFim" value="#{conceitoBean.conceito.dataFim}" class="form-control dataFinal" >
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Fortaleza" />
                     </h:inputText>
                 </div>
