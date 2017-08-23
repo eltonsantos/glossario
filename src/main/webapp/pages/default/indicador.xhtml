@@ -19,7 +19,8 @@
     <ui:define name="body">
         <h:form id="indicador">
            
-                           
+            <h:messages id="messages" />
+            
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <p:outputLabel for="titulo" value="Título" />
@@ -28,8 +29,6 @@
                     <p:inputText id="titulo" value="#{indicadorBean.indicador.titulo}" size="40" styleClass="form-control"/>
                 </div>
             </div>
-
-            <h:message for="titulo" id="messageTitulo" />
 
             <h:commandButton value="Cadastrar Indicador" class="btn btn-primary" type="submit" action="#{indicadorBean.gravarIndicador}" />
 

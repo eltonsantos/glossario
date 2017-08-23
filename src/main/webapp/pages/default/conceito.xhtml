@@ -18,66 +18,94 @@
     <ui:define name="body">
         <h:form>
             <h:messages id="messages" />
-
-            <fieldset>
-                <legend>Dados do conceito</legend>
-
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Descrição: " for="descricao" />
-                    <h:inputText id="descricao" value="#{conceitoBean.conceito.descricao}" required="true" requiredMessage="Descrição obrigatória" validatorMessage="Título não pode ser superior a 40 carácteres">
-                        <f:validateLength maximum="40" />
-                        <f:ajax event="blur" render="messages" />
-                    </h:inputText>
-
-                    <h:outputLabel value="Data Inicial " for="dataInicio" />
-                    <h:inputText id="dataInicio" value="#{conceitoBean.conceito.dataInicio}">
+            
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <p:outputLabel value="Descrição: " for="descricao" />
+                </div>
+                <div class="ui-g-12">
+                    <p:inputText id="descricao" value="#{conceitoBean.conceito.descricao}" required="true" requiredMessage="Descrição obrigatória" validatorMessage="Descrição não pode ser superior a 400 carácteres" size="400" styleClass="form-control" />
+                </div>
+                
+                <div class="ui-g-1">
+                    <p:outputLabel value="Data Inicial: " for="dataInicio" />
+                </div>
+                <div class="ui-g-2">
+                    <h:inputText id="dataInicio" value="#{conceitoBean.conceito.dataInicio}" class="form-control" >
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Fortaleza" />
                     </h:inputText>
-
-                    <h:outputLabel value="Data Final: " for="dataFim" />
-                    <h:inputText id="dataFim" value="#{conceitoBean.conceito.dataFim}">
+                </div>
+                
+                <div class="ui-g-1">
+                    <p:outputLabel value="Data Final: " for="dataFim" />
+                </div>
+                <div class="ui-g-2">
+                    <h:inputText id="dataFim" value="#{conceitoBean.conceito.dataFim}" class="form-control" >
                         <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Fortaleza" />
                     </h:inputText>
-
-                    <h:outputLabel value="Link Cognos: " for="linkCognos" />
-                    <h:inputText id="linkCognos" value="#{conceitoBean.conceito.linkCognos}" />
-
-                    <h:outputLabel value="Link Pentaho: " for="linkPentaho" />
-                    <h:inputText id="linkPentaho" value="#{conceitoBean.conceito.linkPentaho}" />
-                </h:panelGrid>
-            </fieldset>
-
+                </div>
+                
+                <div class="ui-g-12">
+                    <p:outputLabel value="Link Cognos: " for="linkCognos" />
+                </div>
+                <div class="ui-g-12">
+                    <p:inputText id="linkCognos" value="#{conceitoBean.conceito.linkCognos}" required="true" requiredMessage="Link Cognos obrigatória" styleClass="form-control" />
+                </div>
+                
+                <div class="ui-g-12">
+                    <p:outputLabel value="Link Pentaho: " for="linkPentaho" />
+                </div>
+                <div class="ui-g-12">
+                    <p:inputText id="linkPentaho" value="#{conceitoBean.conceito.linkPentaho}" required="true" requiredMessage="Link Pentaho obrigatória" styleClass="form-control" />
+                </div>
+                           
+            </div>
+            
             <fieldset>
                 <legend>Dados do Indicador</legend>
-
-                <h:outputLabel value="Selecione o indicador: " for="indicador" />
-                <h:selectOneMenu value="#{conceitoBean.indicadorId}" id="indicador">
-                    <f:selectItems value="#{conceitoBean.indicadores}" var="indicador" itemLabel="#{indicador.titulo}" itemValue="#{indicador.id}" />
-                </h:selectOneMenu>
-                <h:commandButton value="Associar ao conceito" action="#{conceitoBean.gravarIndicador}">
-                    <f:ajax execute="indicador" render="tabelaIndicadores" />
-                </h:commandButton>
-
-                <br />
-
-                <h:commandLink value="Cadastrar novo indicador" action="#{conceitoBean.formIndicador()}" immediate="true" />
-
-                <h:dataTable value="#{conceitoBean.indicadoresDoConceito}" var="indicador" id="tabelaIndicadores" class="table table-striped table-sm table-hover">
-                    <h:column>
-                        <h:outputText value="#{indicador.titulo}" />
-                    </h:column>
-                    <h:column>
-                        <h:commandLink value="X" action="#{conceitoBean.excluirIndicadorDoConceito(indicador)}" />
-                    </h:column>
-                </h:dataTable>       
+                
+                <div class="ui-g-6">
+                    <h:outputLabel value="Selecione o indicador: " for="indicador" />
+                    <h:selectOneMenu value="#{conceitoBean.indicadorId}" id="indicador" class="form-control">
+                        <f:selectItems value="#{conceitoBean.indicadores}" var="indicador" itemLabel="#{indicador.titulo}" itemValue="#{indicador.id}" />
+                    </h:selectOneMenu>
+                    
+                    <br />
+                    
+                    <h:commandButton value="Associar ao conceito" action="#{conceitoBean.gravarIndicador}" class="btn btn-warning pull-right">
+                        <f:ajax execute="indicador" render="tabelaIndicadores" />
+                    </h:commandButton>
+                    
+                    <!--
+                    <h:commandLink value="Cadastrar novo indicador" action="#{conceitoBean.formIndicador()}" immediate="true" class="btn btn-success" />
+                    -->
+                    
+                </div>
+                
+                <div class="ui-g-6">
+                    <h:dataTable value="#{conceitoBean.indicadoresDoConceito}" var="indicador" id="tabelaIndicadores" class="table table-sm table-hover">
+                        <h:column>
+                            <h:outputText value="#{indicador.titulo}" />
+                        </h:column>
+                        <h:column>
+                            <h:commandLink value="X" action="#{conceitoBean.excluirIndicadorDoConceito(indicador)}" />
+                        </h:column>
+                    </h:dataTable>
+                </div>
+                
             </fieldset>
 
-            <h:commandButton value="Cadastrar conceito" action="#{conceitoBean.gravarConceito}">
+            <br />
+            <hr />
+            
+            <h:commandButton value="Cadastrar conceito" action="#{conceitoBean.gravarConceito}" class="btn btn-primary">
                 <f:ajax execute="@form" render="@form :formTabelaConceitos:tabelaConceitos" />
             </h:commandButton>
 
         </h:form>
 
+        <hr />
+        
         <!-- LISTAR CONCEITOS -->
         <h:form id="formTabelaConceitos">
             <h:dataTable value="#{conceitoBean.conceitos}" var="conceito" id="tabelaConceitos" class="table table-striped table-hover">
@@ -113,11 +141,11 @@
 
                 <h:column>
                     <f:facet name="header">Editar</f:facet>
-                    <h:commandLink value="Editar" action="#{conceitoBean.carregarConceito(conceito)}" />
+                    <h:commandLink value="Editar" action="#{conceitoBean.carregarConceito(conceito)}" class="btn btn-info" />
                 </h:column>
                 <h:column>
                     <f:facet name="header">Excluir</f:facet>
-                    <h:commandLink value="Excluir" action="#{conceitoBean.excluirConceito(conceito)}" />
+                    <h:commandLink value="Excluir" action="#{conceitoBean.excluirConceito(conceito)}" class="btn btn-danger" />
                 </h:column>
             </h:dataTable>
         </h:form>
