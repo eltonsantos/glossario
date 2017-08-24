@@ -4,11 +4,12 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
+        xmlns:o="http://omnifaces.org/ui"
         template="/WEB-INF/templates/template.xhtml">
         
     <f:metadata>
-        <f:viewParam name="conceitoId" value="#{conceitoBean.conceitoId}" />
-        <f:viewAction action="#{conceitoBean.carregarConceitoPelaId}" />
+        <f:viewAction action="#{conceitoBean.carregarConceitoPelaId}"/>
+        <o:viewParam name="conceitoId" value="#{conceitoBean.conceitoId}"/>
     </f:metadata>
 
     <ui:define name="title">
@@ -105,6 +106,7 @@
         <!-- LISTAR CONCEITOS -->
         <h:form id="formTabelaConceitos">
             <h:dataTable value="#{conceitoBean.conceitos}" var="conceito" id="tabelaConceitos" class="table table-striped table-hover">
+                <h:column></h:column>
                 <h:column>
                     <f:facet name="header">Descrição</f:facet>
                     <h:outputText value="#{conceito.descricao}"></h:outputText>
@@ -137,7 +139,7 @@
                 
                 <h:column>
                     <f:facet name="header">Detalhar</f:facet>
-                    <h:commandLink value="Detalhar" action="#{conceitoBean.detalharConceito(conceito)}" class="btn btn-primary" />
+                    <p:commandButton value="Detalhar conceito" type="button" onclick="PF('detalharConceito').show()" icon="fa fa-search" class="btn btn-primary" />
                 </h:column>
                 <h:column>
                     <f:facet name="header">Editar</f:facet>
@@ -149,6 +151,40 @@
                 </h:column>
             </h:dataTable>
         </h:form>
+        
+        
+        <p:dialog header="Detalhar conceito [NÃO FUNCIONA]" widgetVar="detalharConceito" modal="true">
+            
+            <div class="ui-g-12">
+                <h:outputLabel value="Descrição: " class="ui-g-3" />
+                <h:outputText value="#{conceitoBean.conceito.descricao}" class="ui-g-9" />
+            </div>
+
+            <div class="ui-g-12">
+                <h:outputLabel value="Data inicial: " class="ui-g-3" />
+                <h:outputText value="#{conceitoBean.conceito.dataInicio}" class="ui-g-9" />
+            </div>
+
+            <div class="ui-g-12">
+                <h:outputLabel value="Data final: " class="ui-g-3" />
+                <h:outputText value="#{conceitoBean.conceito.dataFim}" class="ui-g-9" />
+            </div>
+
+            <div class="ui-g-12">
+                <h:outputLabel value="Link cognos: " class="ui-g-3" />
+                <h:outputText value="#{conceitoBean.conceito.linkCognos}" class="ui-g-9" />
+            </div>
+
+            <div class="ui-g-12">        
+                <h:outputLabel value="Link pentaho: " class="ui-g-3" />
+                <h:outputText value="#{conceitoBean.conceito.linkPentaho}" class="ui-g-9" />
+            </div>
+
+            <div class="ui-g-12">
+                <h:outputLabel value="Indicadores associados: " class="ui-g-3" />
+                <h:outputText value="#{conceitoBean.indicadores}" class="ui-g-9" />
+            </div>
+        </p:dialog> 
 
     </ui:define>
         
