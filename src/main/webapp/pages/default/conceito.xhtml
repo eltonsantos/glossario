@@ -139,7 +139,7 @@
                 
                 <h:column>
                     <f:facet name="header">Detalhar</f:facet>
-                    <p:commandButton value="Detalhar conceito" type="button" onclick="PF('detalharConceito').show()" icon="fa fa-search" class="btn btn-primary" />
+                    <p:commandButton value="Detalhar conceito" action="#{conceitoBean.detalharConceito(conceito)}" oncomplete="PF('detalharConceito').show();" class="btn btn-primary" />
                 </h:column>
                 <h:column>
                     <f:facet name="header">Editar</f:facet>
@@ -153,8 +153,7 @@
         </h:form>
         
         
-        <p:dialog header="Detalhar conceito [NÃO FUNCIONA]" widgetVar="detalharConceito" modal="true">
-            
+        <p:dialog header="Detalhar conceito [NÃO FUNCIONA]" widgetVar="detalharConceito" modal="true">         
             <div class="ui-g-12">
                 <h:outputLabel value="Descrição: " class="ui-g-3" />
                 <h:outputText value="#{conceitoBean.conceito.descricao}" class="ui-g-9" />

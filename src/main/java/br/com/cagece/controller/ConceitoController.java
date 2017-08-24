@@ -85,18 +85,13 @@ public class ConceitoController implements Serializable {
         
     }
     
-    public String detalharConceito(Conceito conceito){
+    /* DETALHAR CONCEITO - MODAL */
+    public Conceito detalharConceito(Conceito conceito){
         System.out.println("----------------------------------- CARREGANDO DETALHES DO CONCEITO");
-
         EntityManager em = new JPAUtil().getEntityManager();
-        Conceito c = null;
-        try {
-          c = em.find(Conceito.class, conceitoId);
-        } finally {
-          em.close();
-        }
-        return "detalhar";
-       
+        Conceito c = em.find(Conceito.class, conceitoId);
+        em.close();      
+        return c;     
     }
     
     public void carregarConceito(Conceito conceito){
