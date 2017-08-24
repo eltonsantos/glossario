@@ -10,7 +10,6 @@ import br.com.cagece.model.Indicador;
 import br.com.cagece.util.JPAUtil;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,11 +18,6 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
-
-/**
- *
- * @author 211905
- */
 @ManagedBean(name = "conceitoBean")
 @SessionScoped
 @ViewScoped
@@ -32,12 +26,7 @@ public class ConceitoController implements Serializable {
     private Conceito conceito = new Conceito();
     private Integer conceitoId;
     private Integer indicadorId;
-    
-    @PostConstruct
-    private void init(){
-        Indicador indicador = new Indicador();
-    }
-    
+        
     /* MÉTODOS */
     public List<Conceito> getConceitos(){
         System.out.println("----------------------------------- LISTANDO TODOS OS CONCEITOS");
@@ -96,6 +85,11 @@ public class ConceitoController implements Serializable {
         
     }
     
+    public String detalharConceito(Conceito conceito){
+        System.out.println("----------------------------------- CARREGANDO DETALHES DO CONCEITO");
+        return "detalhar";
+    }
+    
     public void carregarConceito(Conceito conceito){
         System.out.println("----------------------------------- CARREGANDO DADOS DO CONCEITO");
         this.conceito = conceito;
@@ -113,13 +107,8 @@ public class ConceitoController implements Serializable {
     }
     
     public void excluirIndicadorDoConceito(Indicador indicador){
-        System.out.println("Excluindo indicador associado ao conceito");
+        System.out.println("\"----------------------------------- EXCLUINDO INDICADOR ASSOCIADO AO CONCEITO");
         this.conceito.excluirIndicador(indicador);
-    }
-    
-    public String formIndicador(){
-        System.out.println("Chamada do formulário do Indicador");
-        return "indicador?faces-redirect=true";
     }
     
     public void carregarConceitoPelaId(){

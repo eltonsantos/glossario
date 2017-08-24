@@ -76,10 +76,6 @@
                         <f:ajax execute="indicador" render="tabelaIndicadores" />
                     </h:commandButton>
                     
-                    <!--
-                    <h:commandLink value="Cadastrar novo indicador" action="#{conceitoBean.formIndicador()}" immediate="true" class="btn btn-success" />
-                    -->
-                    
                 </div>
                 
                 <div class="ui-g-6">
@@ -98,7 +94,7 @@
             <br />
             <hr />
             
-            <h:commandButton value="Cadastrar conceito" action="#{conceitoBean.gravarConceito}" class="btn btn-primary">
+            <h:commandButton value="Cadastrar conceito" action="#{conceitoBean.gravarConceito}" class="btn btn-success">
                 <f:ajax execute="@form" render="@form :formTabelaConceitos:tabelaConceitos" />
             </h:commandButton>
 
@@ -138,7 +134,11 @@
                     <f:facet name="header">Indicador</f:facet>
                     <h:outputText value="#{conceito.indicadores}"></h:outputText>
                 </h:column>
-
+                
+                <h:column>
+                    <f:facet name="header">Detalhar</f:facet>
+                    <h:commandLink value="Detalhar" action="#{conceitoBean.detalharConceito(conceito)}" class="btn btn-primary" />
+                </h:column>
                 <h:column>
                     <f:facet name="header">Editar</f:facet>
                     <h:commandLink value="Editar" action="#{conceitoBean.carregarConceito(conceito)}" class="btn btn-info" />

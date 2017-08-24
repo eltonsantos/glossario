@@ -3,18 +3,12 @@ package br.com.cagece.controller;
 import br.com.cagece.model.Indicador;
 import br.com.cagece.util.JPAUtil;
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
-
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
-/**
- *
- * @author 211905
- */
 @ManagedBean(name = "indicadorBean")
 @SessionScoped
 @ViewScoped

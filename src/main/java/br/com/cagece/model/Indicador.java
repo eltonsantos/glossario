@@ -1,11 +1,6 @@
 package br.com.cagece.model;
 
-/**
- *
- * @author 211905
- */
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
