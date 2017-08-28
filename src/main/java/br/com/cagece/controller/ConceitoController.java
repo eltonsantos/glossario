@@ -27,7 +27,7 @@ public class ConceitoController implements Serializable {
     private Integer conceitoId;
     private Integer indicadorId;
         
-    /* MÉTODOS */
+    /* MÉTODOS */    
     public List<Conceito> getConceitos(){
         System.out.println("----------------------------------- LISTANDO TODOS OS CONCEITOS");
         EntityManager em = new JPAUtil().getEntityManager();
@@ -44,7 +44,11 @@ public class ConceitoController implements Serializable {
         CriteriaQuery<Indicador> query = em.getCriteriaBuilder().createQuery(Indicador.class);
         query.select(query.from(Indicador.class));
         List<Indicador> indicadores = em.createQuery(query).getResultList();
+        
         em.close();
+        if(indicadores.size() == 0){
+        
+        }
         return indicadores;
     }
     
@@ -89,9 +93,9 @@ public class ConceitoController implements Serializable {
     public Conceito detalharConceito(Conceito conceito){
         System.out.println("----------------------------------- CARREGANDO DETALHES DO CONCEITO");
         EntityManager em = new JPAUtil().getEntityManager();
-        Conceito c = em.find(Conceito.class, conceitoId);
-        em.close();      
-        return c;     
+        Conceito c = em.find(Conceito.class, conceito.getId());
+        em.close();
+        return c;
     }
     
     public void carregarConceito(Conceito conceito){

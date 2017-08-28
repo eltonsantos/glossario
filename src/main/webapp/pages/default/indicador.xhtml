@@ -26,11 +26,12 @@
                     <p:outputLabel for="titulo" value="Título" />
                 </div>
                 <div class="ui-g-12">
-                    <p:inputText id="titulo" value="#{indicadorBean.indicador.titulo}" size="40" styleClass="form-control"/>
+                    <p:inputText id="titulo" required="true" requiredMessage="Título obrigatório" value="#{indicadorBean.indicador.titulo}" size="40" styleClass="form-control"/>
+                </div>
+                <div class="ui-g-12">
+                    <h:commandButton value="Cadastrar Indicador" class="btn btn-success" type="submit" action="#{indicadorBean.gravarIndicador}" />
                 </div>
             </div>
-
-            <h:commandButton value="Cadastrar Indicador" class="btn btn-success" type="submit" action="#{indicadorBean.gravarIndicador}" />
 
         </h:form>
 
