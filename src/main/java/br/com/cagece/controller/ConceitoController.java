@@ -88,14 +88,15 @@ public class ConceitoController implements Serializable {
     
     /* DETALHAR CONCEITO - MODAL */
     /*
-    public Conceito detalharConceito(Conceito conceito){
+    public void detalharConceito(Conceito conceito){
         System.out.println("----------------------------------- CARREGANDO DETALHES DO CONCEITO");
+        this.conceito = conceito;
         EntityManager em = new JPAUtil().getEntityManager();
         Conceito c = em.find(Conceito.class, conceito.getId());
         em.close();
         return c;
-    }
-    */
+    }*/
+    
     
     public void carregarConceito(Conceito conceito){
         System.out.println("----------------------------------- CARREGANDO DADOS DO CONCEITO");

@@ -147,17 +147,13 @@
                     <f:facet name="header">Link pentaho</f:facet>
                     <h:outputText value="#{conceito.linkPentaho}"></h:outputText>
                 </h:column>
-
-                <h:column>
-                    <f:facet name="header">Indicador</f:facet>
-                    <h:outputText value="#{conceito.indicadores}"></h:outputText>
-                </h:column>
                 
                 <h:column>
                     <f:facet name="header">Detalhar</f:facet>                                    
                     <p:commandButton value="Detalhar"
                                      oncomplete="PF('detalharConceito').show();"
-                                     process="@this">
+                                     process="@this"
+                                     update="formDetalheConceito">
                         <f:setPropertyActionListener value="#{conceito}"
                                                      target="#{conceitoBean.conceito}" />
                     </p:commandButton>                   
@@ -179,38 +175,44 @@
         <p:dialog header="Detalhar conceito"
                   widgetVar="detalharConceito"
                   modal="true"
+                  width="500"
+                  height="500"
                   appendTo="@(body)"
-                  closable="true">         
-                       
-            <div class="ui-g-12">
-                <h:outputLabel value="Descrição: " class="ui-g-3" />
-                <h:outputText value="#{conceitoBean.conceito.descricao}" class="ui-g-9" />
-            </div>
+                  closable="true"
+                  id="formDetalheConceito">
+            <h:form>
+                <p:panelGrid>
+                    <div class="ui-g-12">
+                        <h:outputLabel value="Descrição: " class="ui-g-3" />
+                        <h:outputText value="#{conceitoBean.conceito.descricao}" class="ui-g-9" />
+                    </div>
 
-            <div class="ui-g-12">
-                <h:outputLabel value="Data inicial: " class="ui-g-3" />
-                <h:outputText value="#{conceitoBean.conceito.dataInicio}" class="ui-g-9" />
-            </div>
+                    <div class="ui-g-12">
+                        <h:outputLabel value="Data inicial: " class="ui-g-3" />
+                        <h:outputText value="#{conceitoBean.conceito.dataInicio}" class="ui-g-9" />
+                    </div>
 
-            <div class="ui-g-12">
-                <h:outputLabel value="Data final: " class="ui-g-3" />
-                <h:outputText value="#{conceitoBean.conceito.dataFim}" class="ui-g-9" />
-            </div>
+                    <div class="ui-g-12">
+                        <h:outputLabel value="Data final: " class="ui-g-3" />
+                        <h:outputText value="#{conceitoBean.conceito.dataFim}" class="ui-g-9" />
+                    </div>
 
-            <div class="ui-g-12">
-                <h:outputLabel value="Link cognos: " class="ui-g-3" />
-                <h:outputText value="#{conceitoBean.conceito.linkCognos}" class="ui-g-9" />
-            </div>
+                    <div class="ui-g-12">
+                        <h:outputLabel value="Link cognos: " class="ui-g-3" />
+                        <h:outputText value="#{conceitoBean.conceito.linkCognos}" class="ui-g-9" />
+                    </div>
 
-            <div class="ui-g-12">        
-                <h:outputLabel value="Link pentaho: " class="ui-g-3" />
-                <h:outputText value="#{conceitoBean.conceito.linkPentaho}" class="ui-g-9" />
-            </div>
+                    <div class="ui-g-12">        
+                        <h:outputLabel value="Link pentaho: " class="ui-g-3" />
+                        <h:outputText value="#{conceitoBean.conceito.linkPentaho}" class="ui-g-9" />
+                    </div>
 
-            <div class="ui-g-12">
-                <h:outputLabel value="Indicadores associados: " class="ui-g-3" />
-                <h:outputText value="#{conceitoBean.indicadores}" class="ui-g-9" />
-            </div>
+                    <div class="ui-g-12">
+                        <h:outputLabel value="Indicadores associados: " class="ui-g-3" />
+                        <h:outputText value="#{conceitoBean.conceito.indicadores}" class="ui-g-9" />
+                    </div>
+                </p:panelGrid>
+            </h:form>
         </p:dialog> 
 
     </ui:define>
