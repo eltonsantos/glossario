@@ -156,8 +156,11 @@
                 <h:column>
                     <f:facet name="header">Detalhar</f:facet>                                    
                     <p:commandButton value="Detalhar"
-                                     actionListener="#{conceitoBean.detalharConceito(conceito)}"
-                                     oncomplete="PF('detalharConceito').show();" />                   
+                                     oncomplete="PF('detalharConceito').show();"
+                                     process="@this">
+                        <f:setPropertyActionListener value="#{conceito}"
+                                                     target="#{conceitoBean.conceito}" />
+                    </p:commandButton>                   
                 </h:column>
                 
                 <h:column>
@@ -171,10 +174,13 @@
                 </h:column>
                 
             </h:dataTable>
-        </h:form>
+        </h:form>       
         
-        
-        <p:dialog header="Detalhar conceito [NÃO FUNCIONA]" widgetVar="detalharConceito" modal="true" appendTo="@(body)" closable="true">         
+        <p:dialog header="Detalhar conceito"
+                  widgetVar="detalharConceito"
+                  modal="true"
+                  appendTo="@(body)"
+                  closable="true">         
                        
             <div class="ui-g-12">
                 <h:outputLabel value="Descrição: " class="ui-g-3" />

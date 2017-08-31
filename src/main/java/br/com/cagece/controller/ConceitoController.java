@@ -10,6 +10,7 @@ import br.com.cagece.model.Indicador;
 import br.com.cagece.util.JPAUtil;
 import java.io.Serializable;
 import java.util.List;
+//import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -27,7 +28,7 @@ public class ConceitoController implements Serializable {
     private Integer conceitoId;
     private Integer indicadorId;
         
-    /* MÉTODOS */    
+    /* MÉTODOS */   
     public List<Conceito> getConceitos(){
         System.out.println("----------------------------------- LISTANDO TODOS OS CONCEITOS");
         EntityManager em = new JPAUtil().getEntityManager();
@@ -44,11 +45,7 @@ public class ConceitoController implements Serializable {
         CriteriaQuery<Indicador> query = em.getCriteriaBuilder().createQuery(Indicador.class);
         query.select(query.from(Indicador.class));
         List<Indicador> indicadores = em.createQuery(query).getResultList();
-        
         em.close();
-        if(indicadores.size() == 0){
-        
-        }
         return indicadores;
     }
     
@@ -90,6 +87,7 @@ public class ConceitoController implements Serializable {
     }
     
     /* DETALHAR CONCEITO - MODAL */
+    /*
     public Conceito detalharConceito(Conceito conceito){
         System.out.println("----------------------------------- CARREGANDO DETALHES DO CONCEITO");
         EntityManager em = new JPAUtil().getEntityManager();
@@ -97,6 +95,7 @@ public class ConceitoController implements Serializable {
         em.close();
         return c;
     }
+    */
     
     public void carregarConceito(Conceito conceito){
         System.out.println("----------------------------------- CARREGANDO DADOS DO CONCEITO");
@@ -126,6 +125,10 @@ public class ConceitoController implements Serializable {
     /* GETTERS AND SETTERS */
     public Conceito getConceito() {
         return conceito;
+    }
+    
+    public void setConceito(Conceito conceito) {
+        this.conceito = conceito;
     }
 
     public Integer getConceitoId() {
