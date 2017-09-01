@@ -106,13 +106,14 @@
         <!-- LISTAR CONCEITOS -->
         <h:form id="formTabelaConceitos">
                
-            <h:outputText value="No momento ainda não há conceito cadastrado! Por favor cadastre um conceito."  class="alert alert-warning ui-g-12"  rendered="#{empty conceitoBean.conceitos}" />
+            <h:outputText value="No momento ainda não há conceito cadastrado! Por favor cadastre um conceito."
+                          class="alert alert-warning ui-g-12"  rendered="#{empty conceitoBean.conceitos}" />
                 
             <h:dataTable value="#{conceitoBean.conceitos}"
                          var="conceito"
                          id="tabelaConceitos"
                          class="table table-striped table-hover"
-                         rendered="#{not empty conceitoBean.conceitos}"  >                      
+                         rendered="#{not empty conceitoBean.conceitos}">                      
                 <!--
                 <h:column>
                     <f:facet name="header">Selecionar</f:facet>

@@ -110,6 +110,11 @@ public class ConceitoController implements Serializable {
     public void carregarConceitoPelaId(){
         EntityManager em = new JPAUtil().getEntityManager();
     }
+    
+    // FORMULÁRIO DE PESQUISA
+    public String pesquisarConceito(){
+        return "pesquisa";
+    }
 
     /* GETTERS AND SETTERS */
     public Conceito getConceito() {
