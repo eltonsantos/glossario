@@ -28,7 +28,7 @@ public class ConceitoController implements Serializable {
     private Integer conceitoId;
     private Integer indicadorId;
         
-    /* MÉTODOS */   
+    /* MÉTODOS */
     public List<Conceito> getConceitos(){
         System.out.println("----------------------------------- LISTANDO TODOS OS CONCEITOS");
         EntityManager em = new JPAUtil().getEntityManager();
