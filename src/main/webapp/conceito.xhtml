@@ -13,7 +13,7 @@
     </f:metadata>
 
     <ui:define name="title">
-        Novo Indicador
+        Novo Conceito
     </ui:define>
 
     <ui:define name="body">
@@ -29,7 +29,7 @@
                     <p:inputText id="titulo" required="true" requiredMessage="Título obrigatório" value="#{indicadorBean.indicador.titulo}" size="40" styleClass="form-control"/>
                 </div>
                 <div class="ui-g-12">
-                    <h:commandButton value="Cadastrar Indicador" class="btn btn-success" type="submit" action="#{indicadorBean.gravarIndicador}" />
+                    <h:commandButton value="Cadastrar Conceito" class="btn btn-success" type="submit" action="#{indicadorBean.gravarIndicador}" />
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
         <!-- LISTAR INDICADORES -->
         <h:form id="formTabelaIndicadores">
             
-            <h:outputText value="No momento ainda não há indicador cadastrado! Por favor cadastre um conceito."
+            <h:outputText value="No momento ainda não há conceito cadastrado! Por favor cadastre um conceito."
                           class="alert alert-warning ui-g-12"  rendered="#{empty indicadorBean.indicadores}" />
                
             <h:dataTable value="#{indicadorBean.indicadores}"
@@ -54,11 +54,11 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Editar</f:facet>
-                    <h:commandLink value="Editar Indicador" class="btn btn-info" action="#{indicadorBean.carregarIndicador(indicador)}"/>
+                    <h:commandLink value="Editar Conceito" class="btn btn-info" action="#{indicadorBean.carregarIndicador(indicador)}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">Excluir</f:facet>
-                    <h:commandLink value="Excluir Indicador" class="btn btn-danger" action="#{indicadorBean.excluirIndicador(indicador)}"/>
+                    <h:commandLink value="Excluir Conceito" class="btn btn-danger" action="#{indicadorBean.excluirIndicador(indicador)}"/>
                 </h:column>
             </h:dataTable>
         </h:form>

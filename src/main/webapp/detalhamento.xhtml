@@ -13,7 +13,7 @@
     </f:metadata>
 
     <ui:define name="title">
-        Novo Conceito
+        Novo Detalhamento
     </ui:define>
 
     <ui:define name="body">
@@ -63,11 +63,11 @@
             </div>
             
             <fieldset>
-                <legend>Dados do Indicador</legend>
+                <legend>Dados do Conceito</legend>
                 
                 <div class="ui-g-6">
-                    <h:outputLabel value="Selecione o indicador: " for="indicador" />
-                    <h:selectOneMenu value="#{conceitoBean.indicadorId}" id="indicador" class="form-control" required="true" requiredMessage="Indicador obrigatório">
+                    <h:outputLabel value="Selecione o conceito: " for="indicador" />
+                    <h:selectOneMenu value="#{conceitoBean.indicadorId}" id="indicador" class="form-control" required="true" requiredMessage="Conceito obrigatório">
                         <f:selectItems value="#{conceitoBean.indicadores}" var="indicador" itemLabel="#{indicador.titulo}" itemValue="#{indicador.id}" />
                     </h:selectOneMenu>
                     
@@ -92,7 +92,7 @@
             </fieldset>
             
             <div class="ui-g-12">            
-                <h:commandButton value="Cadastrar conceito" action="#{conceitoBean.gravarConceito}" class="btn btn-success">
+                <h:commandButton value="Cadastrar Detalhamento" action="#{conceitoBean.gravarConceito}" class="btn btn-success">
                     <f:ajax execute="@form" render="@form :formTabelaConceitos:tabelaConceitos" />
                 </h:commandButton>
             </div>
@@ -106,7 +106,7 @@
         <!-- LISTAR CONCEITOS -->
         <h:form id="formTabelaConceitos">
                
-            <h:outputText value="No momento ainda não há conceito cadastrado! Por favor cadastre um conceito."
+            <h:outputText value="No momento ainda não há detalhamento cadastrado! Por favor cadastre um deta\lhamento."
                           class="alert alert-warning ui-g-12"  rendered="#{empty conceitoBean.conceitos}" />
                 
             <h:dataTable value="#{conceitoBean.conceitos}"
@@ -162,18 +162,18 @@
                 
                 <h:column>
                     <f:facet name="header">Editar</f:facet>
-                    <h:commandLink value="Editar" action="#{conceitoBean.carregarConceito(conceito)}" class="btn btn-info" />
+                    <h:commandLink value="Editar Detalhamento" action="#{conceitoBean.carregarConceito(conceito)}" class="btn btn-info" />
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">Excluir</f:facet>
-                    <h:commandLink value="Excluir" action="#{conceitoBean.excluirConceito(conceito)}" class="btn btn-danger" />
+                    <h:commandLink value="Excluir Detalhamento" action="#{conceitoBean.excluirConceito(conceito)}" class="btn btn-danger" />
                 </h:column>
                 
             </h:dataTable>
         </h:form>       
         
-        <p:dialog header="Detalhar conceito"
+        <p:dialog header="Detalhes"
                   widgetVar="detalharConceito"
                   modal="true"
                   width="500"
@@ -209,7 +209,7 @@
                     </div>
 
                     <div class="ui-g-12">
-                        <h:outputLabel value="Indicadores associados: " class="ui-g-3" />
+                        <h:outputLabel value="Conceitos associados: " class="ui-g-3" />
                         <h:outputText value="#{conceitoBean.conceito.indicadores}" class="ui-g-9" />
                     </div>
                 </p:panelGrid>

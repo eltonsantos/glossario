@@ -82,7 +82,7 @@ public class ConceitoController implements Serializable {
             em.close();
         }
         
-        return "conceito?faces-redirect=true";
+        return "detalhamento?faces-redirect=true";
         
     }
     
@@ -99,7 +99,7 @@ public class ConceitoController implements Serializable {
         em.remove(c);
         em.getTransaction().commit();
         em.close();
-        return "conceito?faces-redirect=true";
+        return "detalhamento?faces-redirect=true";
     }
     
     public void excluirIndicadorDoConceito(Indicador indicador){

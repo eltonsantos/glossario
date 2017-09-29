@@ -48,7 +48,7 @@ public class IndicadorController {
             em.close();
         }
         
-        return "indicador?faces-redirect=true";
+        return "conceito?faces-redirect=true";
         
     }
         
@@ -69,7 +69,7 @@ public class IndicadorController {
         em.remove(i);
         em.getTransaction().commit();
         em.close();
-        return "indicador?faces-redirect=true";
+        return "conceito?faces-redirect=true";
     }
 
     /* GETTERS AND SETTERS */
