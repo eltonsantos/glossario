@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
@@ -30,6 +31,7 @@ public class Conceito implements Serializable {
     private Integer id;
 
     @NotNull
+    @Column(columnDefinition = "TEXT")
     private String descricao;
 
     @Temporal(TemporalType.DATE)

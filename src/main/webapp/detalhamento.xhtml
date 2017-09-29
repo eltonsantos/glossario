@@ -25,7 +25,9 @@
                     <p:outputLabel value="Descrição: " for="descricao" />
                 </div>
                 <div class="ui-g-12">
-                    <p:inputText id="descricao" value="#{conceitoBean.conceito.descricao}" required="true" requiredMessage="Descrição obrigatória" validatorMessage="Descrição não pode ser superior a 400 carácteres" size="400" styleClass="form-control" />
+                    <p:inputTextarea id="descricao" value="#{conceitoBean.conceito.descricao}" required="true" requiredMessage="Descrição obrigatória"
+                                     validatorMessage="Descrição não pode ser superior a 400 carácteres"
+                                     styleClass="form-control" rows="10" cols="50" />                              
                 </div>
                 
                 <div class="ui-g-1">
