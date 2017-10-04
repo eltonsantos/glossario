@@ -169,7 +169,7 @@
                 
                 <h:column>
                     <f:facet name="header">Excluir</f:facet>
-                    <h:commandLink value="Excluir Detalhamento" action="#{conceitoBean.excluirConceito(conceito)}" class="btn btn-danger" />
+                    <h:commandLink value="Excluir Detalhamento" action="#{conceitoBean.excluirConceito(conceito)}" class="btn btn-danger" onclick="return confirm('Você tem certeza?')" />
                 </h:column>
                 
             </h:dataTable>
